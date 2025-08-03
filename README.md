@@ -1,68 +1,34 @@
-\## README.md
-
+## README.md
 ```markdown
+# Order Processing Microservice
 
-\# Order Processing Microservice
+## Overview
+This is a .NET 9 microservice implementing Domain-Driven Design (DDD) principles for order processing. The service exposes REST endpoints for creating and retrieving orders.
 
+### Architectural Decisions
+- **DDD Layers**: Separates Domain, Application, Infrastructure, and Presentation (API) layers to maintain a clear structure and single responsibility.
+- **MediatR (Mediator Pattern)**: Decouples controllers from business logic by sending commands/queries to handlers, enabling pipeline behaviors (validation, logging).
+- **FluentValidation**: Validates commands early, ensuring invalid requests are rejected before business logic executes.
+- **Entity Framework Core**: Provides ORM capabilities; uses SQL Server in production and In-Memory for tests, with owned entities to model value objects.
+- **Serilog**: Offers structured logging to files/Azure Application Insights for monitoring and troubleshooting.
+- **Swagger/OpenAPI**: Auto-generates interactive API docs for easy exploration and testing of endpoints.
 
+## Getting Started
+1. **Clone the repository**
+2. **Update `appsettings.json`** with your SQL Server connection string
+3. **Run migrations**:
+   ```bash
+   dotnet tool install --global dotnet-ef
+   dotnet ef database update --project src/OrderProcessing.Infrastructure --startup-project src/OrderProcessing.Api
+   ```
+4. **Run the API**:
+   ```bash
+   cd src/OrderProcessing.Api
+   dotnet run
+   ```
+5. **Access Swagger UI** at `https://localhost:5001/swagger`
 
-\## Overview
-
-This is a .NET 9 microservice that uses Domain-Driven Design (DDD) principles for order processing. The service provides REST endpoints to create and retrieve orders.
-
-
-
-\### Architectural Decisions
-
-\- \*\*DDD Layers\*\*: Separates Domain, Application, Infrastructure, and Presentation (API) layers for clear structure and single responsibility.
-
-\- \*\*MediatR (Mediator Pattern)\*\*: Keeps controllers separate from business logic by sending commands and queries to handlers. This enables behaviors like validation and logging.
-
-\- \*\*FluentValidation\*\*: Checks commands early to reject invalid requests before executing business logic.
-
-\- \*\*Entity Framework Core\*\*: Offers ORM capabilities, using SQL Server in production and In-Memory for tests. It also uses owned entities to model value objects.
-
-\- \*\*Serilog\*\*: Provides structured logging to files and Azure Application Insights for monitoring and troubleshooting.
-
-\- \*\*Swagger/OpenAPI\*\*: Automatically generates interactive API documentation for easy exploration and testing of endpoints.
-
-
-
-\## Getting Started
-
-1\. \*\*Clone the repository\*\*
-
-2\. \*\*Update `appsettings.json`\*\* with your SQL Server connection string.
-
-3\. \*\*Run migrations\*\*:
-
-```bash
-
-dotnet tool install --global dotnet-ef
-
-dotnet ef database update --project src/OrderProcessing.Infrastructure --startup-project src/OrderProcessing.Api
-
+## Testing
+- **Unit tests**: `dotnet test src/OrderProcessing.Tests/Unit`  
+- **Integration tests**: `dotnet test src/OrderProcessing.Tests/Integration`
 ```
-
-4\. \*\*Run the API\*\*:
-
-```bash
-
-cd src/OrderProcessing.Api
-
-dotnet run
-
-  ```
-
-5\. \*\*Access Swagger UI\*\* at `http://localhost:5025/swagger`
-
-
-
-\## Testing
-
-\- \*\*Unit tests\*\*: `dotnet test src/OrderProcessing.Tests/Unit`  
-
-\- \*\*Integration tests\*\*: `dotnet test src/OrderProcessing.Tests/Integration`
-
-```
-
