@@ -36,23 +36,23 @@ This is a .NET 9 microservice that uses Domain-Driven Design (DDD) principles fo
 
 3\. \*\*Run migrations\*\*:
 
-&nbsp;  ```bash
+```bash
 
-&nbsp;  dotnet tool install --global dotnet-ef
+dotnet tool install --global dotnet-ef
 
-&nbsp;  dotnet ef database update --project src/OrderProcessing.Infrastructure --startup-project src/OrderProcessing.Api
+dotnet ef database update --project src/OrderProcessing.Infrastructure --startup-project src/OrderProcessing.Api
 
-&nbsp;  ```
+```
 
 4\. \*\*Run the API\*\*:
 
-&nbsp;  ```bash
+```bash
 
-&nbsp;  cd src/OrderProcessing.Api
+cd src/OrderProcessing.Api
 
-&nbsp;  dotnet run
+dotnet run
 
-&nbsp;  ```
+  ```
 
 5\. \*\*Access Swagger UI\*\* at `http://localhost:5025/swagger`
 
