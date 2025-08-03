@@ -26,7 +26,7 @@ This is a .NET 9 microservice implementing Domain-Driven Design (DDD) principles
    cd src/OrderProcessing.Api
    dotnet run
    ```
-5. **Access Swagger UI** at `https://localhost:5001/swagger`
+5. **Access Swagger UI** at `http://localhost:5025/swagger`
 
 ## Testing
 - **Unit tests**: `dotnet test src/OrderProcessing.Tests/Unit`  
